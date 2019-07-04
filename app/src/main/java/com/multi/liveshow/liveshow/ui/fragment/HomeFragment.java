@@ -11,7 +11,7 @@ import com.multi.liveshow.R;
 import com.multi.liveshow.liveshow.ui.adapter.MinePagerAdapter;
 import com.multi.liveshow.liveshow.ui.fragment.home.CartoonFragment;
 import com.multi.liveshow.liveshow.ui.fragment.home.EchelonFragment;
-import com.multi.liveshow.liveshow.ui.fragment.home.FollowFragment;
+import com.multi.liveshow.liveshow.ui.fragment.home.HomeAttentionFragment;
 import com.multi.liveshow.liveshow.ui.fragment.home.HotPicFragment;
 import com.multi.liveshow.liveshow.ui.fragment.home.MusicFragment;
 import com.multi.liveshow.liveshow.ui.fragment.home.RecommendFragment;
@@ -49,7 +49,7 @@ public class HomeFragment extends BaseFragment {
 
 
     private void initViewPager() {
-        FollowFragment fragment0 = new FollowFragment();
+        HomeAttentionFragment fragment0 = new HomeAttentionFragment();
         RecommendFragment fragment1 = new RecommendFragment();
         HotPicFragment fragment2 = new HotPicFragment();
         CartoonFragment fragment3 = new CartoonFragment();

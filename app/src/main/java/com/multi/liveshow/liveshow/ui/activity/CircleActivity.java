@@ -14,7 +14,7 @@ import com.multi.liveshow.liveshow.ui.fragment.circle.FollowPeopleFragment;
 import com.multi.liveshow.liveshow.ui.fragment.circle.RecPeopleFragment;
 import com.multi.liveshow.liveshow.ui.fragment.home.CartoonFragment;
 import com.multi.liveshow.liveshow.ui.fragment.home.EchelonFragment;
-import com.multi.liveshow.liveshow.ui.fragment.home.FollowFragment;
+import com.multi.liveshow.liveshow.ui.fragment.home.HomeAttentionFragment;
 import com.multi.liveshow.liveshow.ui.fragment.home.HotPicFragment;
 import com.multi.liveshow.liveshow.ui.fragment.home.MusicFragment;
 import com.multi.liveshow.liveshow.ui.fragment.home.RecommendFragment;
