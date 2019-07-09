@@ -87,7 +87,7 @@ public class SystemBarHelper {
         ViewGroup contentView = (ViewGroup) window.getDecorView().findViewById(Window.ID_ANDROID_CONTENT);
         View rootView = contentView.getChildAt(0);
         if (rootView != null) {
-            ViewCompat.setFitsSystemWindows(rootView, true);
+           // ViewCompat.setFitsSystemWindows(rootView, true);
         }
         setStatusBar(decorView, statusBarColor, true);
         setTranslucentView(decorView, alpha);
@@ -222,7 +222,7 @@ public class SystemBarHelper {
         int statusBarHeight = getStatusBarHeight(window.getContext());
         if (rootView != null) {
             FrameLayout.LayoutParams lp = (FrameLayout.LayoutParams) rootView.getLayoutParams();
-            ViewCompat.setFitsSystemWindows(rootView, true);
+            //ViewCompat.setFitsSystemWindows(rootView, true);
             lp.topMargin = -statusBarHeight;
             rootView.setLayoutParams(lp);
         }
@@ -456,7 +456,7 @@ public class SystemBarHelper {
                     forceFitsSystemWindows((ViewGroup) view);
                 } else {
                     if (ViewCompat.getFitsSystemWindows(view)) {
-                        ViewCompat.setFitsSystemWindows(view, false);
+                        //ViewCompat.setFitsSystemWindows(view, false);
                     }
                 }
             }

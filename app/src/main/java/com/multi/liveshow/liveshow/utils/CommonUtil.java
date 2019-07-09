@@ -20,8 +20,8 @@ public class CommonUtil {
      * 检查是否有网络
      */
     public static boolean isNetworkAvailable(Context context) {
-        NetworkInfo info = getNetworkInfo(context);
-        return info != null && info.isAvailable();
+       // NetworkInfo info = getNetworkInfo(context);
+        return false;
     }
 
 
@@ -30,11 +30,11 @@ public class CommonUtil {
      */
     public static boolean isWifi(Context context) {
         NetworkInfo info = getNetworkInfo(context);
-        if (info != null) {
-            if (info.getType() == ConnectivityManager.TYPE_WIFI) {
-                return true;
-            }
-        }
+        //if (info != null) {
+        //    if (info.getType() == ConnectivityManager.TYPE_WIFI) {
+        //        return true;
+        //    }
+       // }
         return false;
     }
 
@@ -44,11 +44,11 @@ public class CommonUtil {
      */
     public static boolean isMobile(Context context) {
         NetworkInfo info = getNetworkInfo(context);
-        if (info != null) {
-            if (info.getType() == ConnectivityManager.TYPE_MOBILE) {
-                return true;
-            }
-        }
+        //if (info != null) {
+        //    if (info.getType() == ConnectivityManager.TYPE_MOBILE) {
+        //        return true;
+        //    }
+       /// }
         return false;
     }
 

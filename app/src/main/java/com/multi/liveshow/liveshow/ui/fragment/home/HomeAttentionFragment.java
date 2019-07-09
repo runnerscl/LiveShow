@@ -7,6 +7,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.RelativeLayout;
+import com.multi.liveshow.liveshow.network.api.BiliApiService;
 
 import com.multi.liveshow.liveshow.ui.adapter.AttentionDynamicAdapter;
 import com.multi.liveshow.liveshow.base.RxLazyFragment;
@@ -14,22 +15,31 @@ import com.multi.liveshow.liveshow.entity.AttentionDynamicInfo;
 import com.multi.liveshow.liveshow.network.RetrofitHelper;
 import com.multi.liveshow.liveshow.utils.SnackbarUtil;
 import com.multi.liveshow.liveshow.widget.CustomEmptyView;
+import com.multi.liveshow.liveshow.presenter.NewsListPresenter;
+import com.multi.liveshow.liveshow.presenter.view.lNewsListView;
+import com.multi.liveshow.liveshow.base.BaseFragment;
 import com.multi.liveshow.R;
+import io.reactivex.Observer;
+import io.reactivex.disposables.Disposable;
 
 import java.util.ArrayList;
 import java.util.List;
+import com.socks.library.KLog;
+import retrofit2.Retrofit;
+import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 import butterknife.BindView;
-//import rx.android.schedulers.AndroidSchedulers;
-//import rx.schedulers.Schedulers;
+import rx.android.schedulers.AndroidSchedulers;
+import rx.schedulers.Schedulers;
 
 /**
  * Created by hcc on 16/8/22 21:40
  * 100332338@qq.com
- * <p/>
+ * <p/><NewsListPresenter>
  * 主界面关注界面
  */
-public class HomeAttentionFragment extends RxLazyFragment {
+public class HomeAttentionFragment extends RxLazyFragment<NewsListPresenter> implements lNewsListView  {
     @BindView(R.id.swipe_refresh_layout)
     SwipeRefreshLayout mSwipeRefreshLayout;
     @BindView(R.id.recycle)
@@ -40,10 +50,17 @@ public class HomeAttentionFragment extends RxLazyFragment {
     RelativeLayout topLayout;
 
     private boolean mIsRefreshing = false;
+
+    //private val mPresenter by lazy{ VideoDetailPresenter()}
     private List<AttentionDynamicInfo.DataBean.FeedsBean> dynamics = new ArrayList<>();
 
     public static HomeAttentionFragment newInstance() {
         return new HomeAttentionFragment();
+    }
+
+    @Override
+    protected NewsListPresenter createPresenter() {
+        return new NewsListPresenter(this);
     }
 
     @Override
@@ -62,37 +79,45 @@ public class HomeAttentionFragment extends RxLazyFragment {
         if (!isPrepared || !isVisible) {
             return;
         }
-        //initRefreshLayout();
+        initRefreshLayout();
         isPrepared = false;
     }
 
- /*   @Override
+    @Override
+    public void onError() {
+        KLog.d("initRefreshLayout onerror" );
+    }
+
+    @Override
+    public void onGetNewsListSuccess(List<AttentionDynamicInfo.DataBean.FeedsBean> newList) {
+        KLog.d("onGetNewsListSuccess success" );
+        initRecyclerView();
+    }
+
+    @Override
     protected void initRefreshLayout() {
         mSwipeRefreshLayout.setColorSchemeResources(R.color.colorPrimary);
-        mSwipeRefreshLayout.post(() -> {
+       /* mSwipeRefreshLayout.post(new Runnable() {
+            @Override
+            public void run() {
             mSwipeRefreshLayout.setRefreshing(true);
             mIsRefreshing = true;
-          //  loadData();
-        });
-        mSwipeRefreshLayout.setOnRefreshListener(() -> {
-         //   clearData();
-         //   loadData();
-        });
-    }*/
+            loadData();
+        });*/
+        mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
 
-    /*@Override
-    protected void loadData() {
-        RetrofitHelper.getBiliAPI()
-                .getAttentionDynamic()
-                .compose(bindToLifecycle())
-                .map(attentionDynamicInfo -> attentionDynamicInfo.getData().getFeeds())
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(feedsBeans -> {
-                    dynamics.addAll(feedsBeans);
-                    finishTask();
-                }, throwable -> initEmptyView());
-    }*/
+                mSwipeRefreshLayout.setRefreshing(true);
+                KLog.d(" initRefreshLayout" );
+                //clearData();
+               //loadData();
+                mPresenter.getNewsList();
+
+            }
+
+        });
+    }
 
 
     @Override

@@ -109,7 +109,7 @@ public class CircleActivity extends BaseActivity {
             public IPagerIndicator getIndicator(Context context) {
                 LinePagerIndicator indicator = new LinePagerIndicator(context);
                 indicator.setMode(LinePagerIndicator.MODE_EXACTLY);
-                indicator.setColors(getResources().getColor(R.color.yellow_fed943));
+                //indicator.setColors(getResources().getColor(R.color.yellow_fed943));
                 indicator.setLineWidth(50);
                 indicator.setLineHeight(10);
                 return indicator;

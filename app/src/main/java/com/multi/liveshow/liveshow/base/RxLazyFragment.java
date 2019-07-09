@@ -21,7 +21,7 @@ import butterknife.Unbinder;
  * <p/>
  * Fragment基类
  */
-public abstract class RxLazyFragment extends RxFragment {
+public abstract class RxLazyFragment <T extends BasePresenter> extends RxFragment {
     private View parentView;
     private FragmentActivity activity;
     // 标志位 标志已经初始化完成。
@@ -29,15 +29,27 @@ public abstract class RxLazyFragment extends RxFragment {
     //标志位 fragment是否可见
     protected boolean isVisible;
     private Unbinder bind;
+    protected T mPresenter;
 
     public abstract
     @LayoutRes
     int getLayoutResId();
 
     @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        mPresenter = createPresenter();
+    }
+
+
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle state) {
         parentView = inflater.inflate(getLayoutResId(), container, false);
         activity = getSupportActivity();
+       // mPresenter = createPresenter();
+        //finishCreateView(savedInstanceState);
+        lazyLoad();
         return parentView;
     }
 
@@ -75,6 +87,7 @@ public abstract class RxLazyFragment extends RxFragment {
         this.activity = (FragmentActivity) activity;
     }
 
+    protected abstract T createPresenter();
 
     @Override
     public void onDetach() {

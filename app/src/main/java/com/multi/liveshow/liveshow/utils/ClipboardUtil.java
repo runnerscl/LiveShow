@@ -43,7 +43,7 @@ public class ClipboardUtil {
             mNewCliboardManager.setPrimaryClip(clip);
         } else {
             instance(context);
-            mClipboardManager.setText(text);
+           // mClipboardManager.setText(text);
         }
     }
 
@@ -68,7 +68,7 @@ public class ClipboardUtil {
             }
         } else {
             instance(context);
-            sb.append(mClipboardManager.getText());
+           // sb.append(mClipboardManager.getText());
         }
         return sb.toString();
     }

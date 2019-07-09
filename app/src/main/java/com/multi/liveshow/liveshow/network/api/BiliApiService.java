@@ -1,6 +1,6 @@
 package com.multi.liveshow.liveshow.network.api;
 
-import com.multi.liveshow.liveshow.entity.attention.AttentionDynamicInfo;
+import com.multi.liveshow.liveshow.entity.AttentionDynamicInfo;
 import com.hotbitmapgg.bilibili.entity.bangumi.BangumiDetailsCommentInfo;
 import com.hotbitmapgg.bilibili.entity.bangumi.SpecialTopic;
 import com.hotbitmapgg.bilibili.entity.bangumi.SpecialTopicIResult;

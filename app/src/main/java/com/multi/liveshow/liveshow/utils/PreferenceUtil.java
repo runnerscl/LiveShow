@@ -67,17 +67,17 @@ public final class PreferenceUtil {
         return PreferenceManager.getDefaultSharedPreferences(BilibiliApp.getInstance()).getBoolean(key, defValue);
     }
 
-    public static void putStringProcess(String key, String value) {
+    /*public static void putStringProcess(String key, String value) {
         SharedPreferences sharedPreferences = BilibiliApp.getInstance().getSharedPreferences("preference_mu", Context.MODE_MULTI_PROCESS);
         Editor editor = sharedPreferences.edit();
         editor.putString(key, value);
         editor.apply();
-    }
+    }*/
 
-    public static String getStringProcess(String key, String defValue) {
+    /*public static String getStringProcess(String key, String defValue) {
         SharedPreferences sharedPreferences = BilibiliApp.getInstance().getSharedPreferences("preference_mu", Context.MODE_MULTI_PROCESS);
         return sharedPreferences.getString(key, defValue);
-    }
+    }*/
 
     public static boolean hasString(String key) {
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(BilibiliApp.getInstance());

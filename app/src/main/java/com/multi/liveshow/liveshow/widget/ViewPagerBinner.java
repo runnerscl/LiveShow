@@ -54,7 +54,7 @@ public class ViewPagerBinner extends RelativeLayout implements
             currentNumber = (imageViews.length) * 100;
             viewPager.setCurrentItem(currentNumber);
             // 设置监听器
-            viewPager.setOnPageChangeListener(this);
+            //viewPager.setOnPageChangeListener(this);
             // 开始自动播放
             final Message message = handler.obtainMessage(MSG_CODE);
             handler.sendMessageDelayed(message, TIME_INTERVAL);

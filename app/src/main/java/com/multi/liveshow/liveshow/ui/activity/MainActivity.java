@@ -170,10 +170,10 @@ public class MainActivity extends BaseActivity {
 
     //重置底部的按钮和文字的状态
     private void resetAll() {
-        tvHome.setTextColor(getResources().getColor(R.color.gray_888888));
-        tvPicture.setTextColor(getResources().getColor(R.color.gray_888888));
-        tvCommunity.setTextColor(getResources().getColor(R.color.gray_888888));
-        tvMy.setTextColor(getResources().getColor(R.color.gray_888888));
+        //tvHome.setTextColor(getResources().getColor(R.color.gray_888888));
+        //tvPicture.setTextColor(getResources().getColor(R.color.gray_888888));
+        //tvCommunity.setTextColor(getResources().getColor(R.color.gray_888888));
+        //tvMy.setTextColor(getResources().getColor(R.color.gray_888888));
 
         ivHome.setImageResource(R.mipmap.home_normal);
         ivPicture.setImageResource(R.mipmap.take_photo_normal);
@@ -190,7 +190,7 @@ public class MainActivity extends BaseActivity {
      * @date 2019-06-05
      */
     private void setSelectedChange(TextView tv) {
-        tv.setTextColor(getResources().getColor(R.color.black_333333));
+       // tv.setTextColor(getResources().getColor(R.color.black_333333));
     }
 
     /**
